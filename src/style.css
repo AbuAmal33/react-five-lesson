@@ -25,14 +25,13 @@
     border: none;
     margin-left: 15px;
 }
-.todos {
-    margin-top: 15px;
-}
 .todo {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 15px;
 }
 .todo-text {
     flex: 1;
@@ -48,8 +47,13 @@
 .actions {
     padding: 0 15px;
 }
-.actions span {
+.actions button {
     font-size: 22px;
+    background-color: transparent;
+    border: none;
+    padding: 7px;
+    cursor: pointer;
+    outline: none;
 }
 .selected {
     background-color: #ececc9;
@@ -57,7 +61,6 @@
 .selected .favorite span {
     color: #ffc800;
 }
-.selected .actions span {
+.selected .actions button {
     color: red;
-    font-weight: lighter;
 }

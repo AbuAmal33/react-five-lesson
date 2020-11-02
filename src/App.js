@@ -1,6 +1,8 @@
+import {useState} from "react";
 
 function App() {
-    const todos = [
+
+    const [todos, setTodos] = useState([
         {
             text: "Купить барана",
             favorite: false,
@@ -13,19 +15,21 @@ function App() {
             text: "Выучить React",
             favorite: false,
         }
-    ];
+    ]);
 
-    const newTodos = todos.map((todo) => {
-        let todoClass;
+    const deleteTodo = (indexOfRemovedItem) => {
+        const filtered = todos.filter((todo, index) => {
+            if (index === indexOfRemovedItem) {
+               return false;
+            } return true;
+        });
+        setTodos(filtered)
+    }
 
-        if (todo.favorite === true) {
-            todoClass = "todo selected";
-        } else {
-            todoClass = "todo";
-        }
+    const newTodos = todos.map((todo, index) => {
 
         return (
-            <div className={todoClass}>
+            <div className={`todo ${todo.favorite ? 'selected' : ''}`}>
                 <div className="favorite">
                     <span><i className="fa fa-star" aria-hidden="true"> </i></span>
                 </div>
@@ -33,7 +37,7 @@ function App() {
                     {todo.text}
                 </div>
                 <div className="actions">
-                    <span><i className="fa fa-times" aria-hidden="true"> </i></span>
+                    <button onClick={() => deleteTodo(index)}><i className="fa fa-times" aria-hidden="true"> </i></button>
                 </div>
             </div>
         )
